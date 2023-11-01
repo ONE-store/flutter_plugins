@@ -1,4 +1,4 @@
-import 'package:flutter_onestore_inapp/onestore_in_app_wrappers.dart';
+import 'package:flutter_onestore_inapp/flutter_onestore_inapp.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const PurchaseData dummyPurchase = PurchaseData(

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:logger/logger.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_onestore_inapp/onestore_in_app_wrappers.dart';
+import 'package:flutter_onestore_inapp/flutter_onestore_inapp.dart';
 
 import 'config/app_config.dart';
 

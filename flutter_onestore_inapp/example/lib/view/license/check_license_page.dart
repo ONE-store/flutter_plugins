@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter_onestore_inapp/onestore_in_app_wrappers.dart';
+import 'package:flutter_onestore_inapp/flutter_onestore_inapp.dart';
 
 import '../widget/custom_widget.dart';
 import '../../res/colors.dart';

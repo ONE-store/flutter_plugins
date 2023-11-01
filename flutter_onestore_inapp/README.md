@@ -83,7 +83,7 @@ A flutter plugin for ONE store In-App Purchase.
 > Import it and use in Dart code.
 >
 >   ```dart
->     import 'package:flutter_onestore_inapp/onestore_in_app_wrappers.dart';
+>     import 'package:flutter_onestore_inapp/flutter_onestore_inapp.dart';
 >   ```
 
 - [Request Login](https://onestore-dev.gitbook.io/dev/tools/tools/v21/14.-flutter-sdk-v21#undefined-2)
