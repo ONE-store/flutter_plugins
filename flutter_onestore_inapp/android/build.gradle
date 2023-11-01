@@ -1,0 +1,50 @@
+group 'com.onestorecorp.sdk.flutter.plugins'
+version '1.0.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://repo.onestore.co.kr/repository/onestore-sdk-public' }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.onestorecorp.sdk.flutter.plugins'
+    }
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        checkAllWarnings true
+        warningsAsErrors true
+        disable 'AndroidGradlePluginVersion', 'InvalidPackage', 'GradleDependency'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+
+dependencies {
+    implementation "com.onestorecorp.sdk:sdk-licensing:2.0.0"
+    implementation "com.onestorecorp.sdk:sdk-iap:21.00.02"
+}
