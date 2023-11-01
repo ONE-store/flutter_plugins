@@ -17,6 +17,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable' # or: 'beta', 'dev' or 'master'
+      - run: flutter --version
+        working-directory: ./flutter_onestore_inapp
 
       # Note: This workflow uses the latest stable version of the Dart SDK.
       # You can specify other versions if desired, see documentation here:
@@ -26,7 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-        working-directory: flutter_onestore_inapp
+        working-directory: ./flutter_onestore_inapp
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting
@@ -35,11 +40,11 @@ jobs:
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
         run: flutter analyze
-        working-directory: flutter_onestore_inapp
+        working-directory: ./flutter_onestore_inapp
         
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
       - name: Run tests
         run: flutter test
-        working-directory: flutter_onestore_inapp
+        working-directory: ./flutter_onestore_inapp
