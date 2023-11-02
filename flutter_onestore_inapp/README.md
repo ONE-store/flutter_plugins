@@ -1,5 +1,7 @@
 # flutter\_onestore\_inapp
 
+[![GitHub CI](https://github.com/ONE-store/flutter_plugins/actions/workflows/flutter.yml/badge.svg)](https://github.com/ONE-store/flutter_plugins/actions)
+
 A flutter plugin for ONE store In-App Purchase.
 
 > For more information, see the [**Developer Center**](https://dev.onestore.co.kr/devpoc/index.omp).
