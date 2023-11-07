@@ -7,7 +7,6 @@ import '../../res/colors.dart';
 import '../../res/theme.dart';
 
 class PurchaseDetailsPage extends StatefulWidget {
-
   const PurchaseDetailsPage({super.key});
 
   @override

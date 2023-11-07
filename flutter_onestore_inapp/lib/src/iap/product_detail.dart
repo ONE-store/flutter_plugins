@@ -110,8 +110,8 @@ class ProductDetail {
   }
 
   @override
-  int get hashCode => Object.hash(
-      productId, productType, title, price, priceCurrencyCode, priceAmountMicros);
+  int get hashCode => Object.hash(productId, productType, title, price,
+      priceCurrencyCode, priceAmountMicros);
 }
 
 @JsonSerializable()

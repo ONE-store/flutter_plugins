@@ -36,7 +36,6 @@ class IapResult implements HasPurchaseResponse {
     return 'IapResult(responseCode=$responseCode($code), message=$message)';
   }
 
-
   @override
   bool operator ==(Object other) {
     if (other.runtimeType != runtimeType) return false;

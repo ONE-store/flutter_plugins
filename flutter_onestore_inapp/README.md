@@ -1,7 +1,9 @@
 # flutter\_onestore\_inapp
 
 [![GitHub CI](https://github.com/ONE-store/flutter_plugins/actions/workflows/flutter.yml/badge.svg)](https://github.com/ONE-store/flutter_plugins/actions)
-[![GitHub release (with filter)](https://img.shields.io/github/v/release/ONE-store/flutter_plugins)](https://github.com/ONE-store/flutter_plugins/releases/tag/flutter_onestore_inapp-v0.1.0)
+[![GitHub release (with filter)](https://img.shields.io/github/v/release/ONE-store/flutter_plugins)](https://github.com/ONE-store/flutter_plugins/releases/tag/flutter_onestore_inapp-v0.1.1)
+[![Pub Version (including pre-releases)](https://img.shields.io/pub/v/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/versions/0.1.1)
+[![Pub Points](https://img.shields.io/pub/points/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/score)
 
 
 A flutter plugin for ONE store In-App Purchase.
@@ -30,7 +32,7 @@ A flutter plugin for ONE store In-App Purchase.
 >       ```dart
 >         dependencies:
 >           ..
->           flutter_onestore_inapp: ^0.1.0
+>           flutter_onestore_inapp: ^0.1.1
 >           ..
 >       ```
 >
@@ -95,7 +97,7 @@ A flutter plugin for ONE store In-App Purchase.
 - [Query Product Details](https://onestore-dev.gitbook.io/dev/tools/tools/v21/14.-flutter-sdk-v21#undefined-4)
 - [Launch Purchase Flow](https://onestore-dev.gitbook.io/dev/tools/tools/v21/14.-flutter-sdk-v21#undefined-5)
 - [Query Purchases](https://onestore-dev.gitbook.io/dev/tools/tools/v21/14.-flutter-sdk-v21#undefined-7)
-- [Update Subscription]((https://onestore-dev.gitbook.io/dev/tools/tools/v21/14.-flutter-sdk-v21#undefined-8))
+- [Update Subscription](https://onestore-dev.gitbook.io/dev/tools/tools/v21/14.-flutter-sdk-v21#undefined-8)
 - [Open the subscription management](https://onestore-dev.gitbook.io/dev/tools/tools/v21/14.-flutter-sdk-v21#undefined-9)
 - [Install ONE store service (OSS)](https://onestore-dev.gitbook.io/dev/tools/tools/v21/14.-flutter-sdk-v21#undefined-10)
 

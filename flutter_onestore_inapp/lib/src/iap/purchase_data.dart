@@ -26,8 +26,7 @@ class PurchaseData {
       required this.isAcknowledged,
       this.developerPayload,
       required this.originalJson,
-      required this.signature
-  });
+      required this.signature});
 
   factory PurchaseData.fromJson(Map<String, dynamic> map) =>
       _$PurchaseDataFromJson(map);

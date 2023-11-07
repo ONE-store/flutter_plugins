@@ -237,8 +237,7 @@ class PurchaseClientManager {
   Future<IapResult> launchPurchaseFlow(
       {required ProductDetail productDetail,
       int? quantity,
-      String? developerPayload
-  }) async {
+      String? developerPayload}) async {
     return await _execute((client) => client.launchPurchaseFlow(
         productId: productDetail.productId,
         productType: productDetail.productType,
@@ -259,20 +258,19 @@ class PurchaseClientManager {
   ///
   /// ['PurchaseClient#launchPurchaseFlow()'](https://onestore-dev.gitbook.io/dev/v/eng/tools/tools/v21/references/en-classes/en-purchaseclient#id-en-purchaseclient-launchpurchaseflow)
   /// [Request a Purchase](https://onestore-dev.gitbook.io/dev/v/eng/tools/tools/v21/implementing-one-store-iap-sdk#implementingonestoreiapsdk-requestapurchase)
-  Future<IapResult> launchUpdateSubscription(
-      {required ProductDetail productDetail,
-      required PurchaseData oldPurchaseData,
-      ProrationMode? prorationMode,
-      String? developerPayload,
+  Future<IapResult> launchUpdateSubscription({
+    required ProductDetail productDetail,
+    required PurchaseData oldPurchaseData,
+    ProrationMode? prorationMode,
+    String? developerPayload,
   }) async {
     return await _execute((client) => client.launchPurchaseFlow(
-      productId: productDetail.productId,
-      productType: productDetail.productType,
-      quantity: 1,
-      developerPayload: developerPayload,
-      oldPurchaseToken: oldPurchaseData.purchaseToken,
-      prorationMode: prorationMode
-    ));
+        productId: productDetail.productId,
+        productType: productDetail.productType,
+        quantity: 1,
+        developerPayload: developerPayload,
+        oldPurchaseToken: oldPurchaseData.purchaseToken,
+        prorationMode: prorationMode));
   }
 
   /// 구매한 구독 상품[PurchaseData]의 정보를 가지고 해당 상품의 관리 메뉴로 이동합니다.

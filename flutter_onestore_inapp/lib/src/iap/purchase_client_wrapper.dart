@@ -14,7 +14,6 @@ const String _kOnPurchasesUpdated = 'onPurchasesUpdated';
 const String _kOnServiceDisconnected = 'onServiceDisconnected';
 
 class PurchaseClient extends OneStoreChannel {
-
   String? _publicKey; // 'input your key'
 
   final Map<String, List<Function>> _callbacks = <String, List<Function>>{};
@@ -75,7 +74,8 @@ class PurchaseClient extends OneStoreChannel {
       'signature': purchaseData.signature
     };
     return IapResult.fromJson((await channel.invokeMapMethod<String, dynamic>(
-            'consumeAsync', arguments)) ?? <String, dynamic>{});
+            'consumeAsync', arguments)) ??
+        <String, dynamic>{});
   }
 
   Future<IapResult> acknowledgeAsync(PurchaseData purchaseData) async {
@@ -84,7 +84,8 @@ class PurchaseClient extends OneStoreChannel {
       'signature': purchaseData.signature
     };
     return IapResult.fromJson((await channel.invokeMapMethod<String, dynamic>(
-            'acknowledgeAsync', arguments)) ?? <String, dynamic>{});
+            'acknowledgeAsync', arguments)) ??
+        <String, dynamic>{});
   }
 
   Future<PurchasesResultResponse> queryPurchases(ProductType type) async {

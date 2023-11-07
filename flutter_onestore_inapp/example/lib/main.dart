@@ -11,16 +11,14 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
-    // ChangeNotifier 를 사용하기 위한 프로바이더 등록.
-    ChangeNotifierProvider(
-        create: (context) => PurchaseViewModel(),
-        child: const MyApp(),
-    )
-  );
+      // ChangeNotifier 를 사용하기 위한 프로바이더 등록.
+      ChangeNotifierProvider(
+    create: (context) => PurchaseViewModel(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
-
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
@@ -41,12 +39,11 @@ class MyApp extends StatelessWidget {
 
 Route<dynamic>? generatedRoutes(RouteSettings settings) {
   switch (settings.name) {
-
     case '/subscription/detail':
       final args = settings.arguments as Map<String, dynamic>;
       return MaterialPageRoute(builder: (context) {
         return SubscriptionDetailPage(
-            productId: args['productId'],
+          productId: args['productId'],
         );
       });
 
@@ -57,4 +54,3 @@ Route<dynamic>? generatedRoutes(RouteSettings settings) {
       return null;
   }
 }
-

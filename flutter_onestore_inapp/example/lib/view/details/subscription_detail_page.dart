@@ -135,8 +135,7 @@ class _SubscriptionDetailState extends State<SubscriptionDetailPage> {
             -1)
         .map((e) => PageItem<ProductDetail>(
             title: e.title,
-            description:
-                '${e.subscriptionPeriod.toString()} '
+            description: '${e.subscriptionPeriod.toString()} '
                 '(${e.subscriptionPeriodUnitCode})',
             data: e))
         .toList();

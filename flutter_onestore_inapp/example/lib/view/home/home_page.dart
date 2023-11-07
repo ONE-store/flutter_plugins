@@ -130,8 +130,7 @@ class _HomePageState extends State<HomePage> {
         .where((product) => purchaseIds.contains(product.productId))
         .map((e) => PageItem<ProductDetail>(
             title: e.title,
-            description:
-                '${e.subscriptionPeriod.toString()} '
+            description: '${e.subscriptionPeriod.toString()} '
                 '(${e.subscriptionPeriodUnitCode})',
             data: e))
         .toList();

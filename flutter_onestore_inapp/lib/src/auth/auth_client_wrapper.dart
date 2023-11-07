@@ -7,7 +7,8 @@ class OneStoreAuthClient extends OneStoreChannel {
 
   // launchSignInFlow 호출
   Future<SignInResult> launchSignInFlow() async {
-    return SignInResult.fromJson(await channel.invokeMapMethod('launchSignInFlow') ?? <String, dynamic>{});
+    return SignInResult.fromJson(
+        await channel.invokeMapMethod('launchSignInFlow') ??
+            <String, dynamic>{});
   }
 }
-

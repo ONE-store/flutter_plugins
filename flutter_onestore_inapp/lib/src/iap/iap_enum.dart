@@ -71,7 +71,6 @@ class PurchaseStateConverter implements JsonConverter<PurchaseState, int?> {
 /// 상수의 자세한 설명은 링크를 참조하세요.
 @JsonEnum(alwaysCreate: true)
 enum AcknowledgeState {
-
   @JsonValue(0)
   notAcknowledged,
 
@@ -243,7 +242,8 @@ enum PurchaseResponse {
   clientNotEnabled,
 }
 
-class PurchaseResponseConverter implements JsonConverter<PurchaseResponse, int?> {
+class PurchaseResponseConverter
+    implements JsonConverter<PurchaseResponse, int?> {
   const PurchaseResponseConverter();
 
   @override
