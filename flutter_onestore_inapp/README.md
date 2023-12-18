@@ -32,7 +32,7 @@ A flutter plugin for ONE store In-App Purchase.
 >       ```dart
 >         dependencies:
 >           ..
->           flutter_onestore_inapp: ^0.2.0
+>           flutter_onestore_inapp: ^0.2.1
 >           ..
 >       ```
 >

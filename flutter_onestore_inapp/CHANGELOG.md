@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Update Readme.md
+
 ## 0.2.0
 
 * Update Library  InApp Purchase SDK 21.0.02 -> 21.0.1.00
