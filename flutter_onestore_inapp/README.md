@@ -1,8 +1,8 @@
 # flutter\_onestore\_inapp
 
 [![GitHub CI](https://github.com/ONE-store/flutter_plugins/actions/workflows/flutter.yml/badge.svg)](https://github.com/ONE-store/flutter_plugins/actions)
-[![GitHub release (with filter)](https://img.shields.io/github/v/release/ONE-store/flutter_plugins)](https://github.com/ONE-store/flutter_plugins/releases/tag/flutter_onestore_inapp-v0.1.1)
-[![Pub Version (including pre-releases)](https://img.shields.io/pub/v/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/versions/0.1.1)
+[![GitHub release (with filter)](https://img.shields.io/github/v/release/ONE-store/flutter_plugins)](https://github.com/ONE-store/flutter_plugins/releases/tag/flutter_onestore_inapp-v0.2.0)
+[![Pub Version (including pre-releases)](https://img.shields.io/pub/v/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/versions/0.2.0)
 [![Pub Points](https://img.shields.io/pub/points/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/score)
 
 
@@ -27,12 +27,12 @@ A flutter plugin for ONE store In-App Purchase.
 >         $ flutter pub add flutter_onestore_inapp
 >       ```
 > 
->   - Add dependency to **pubspec.yaml**
+>   - Add dependency to **pubspec.yaml**[README.md](README.md)
 >
 >       ```dart
 >         dependencies:
 >           ..
->           flutter_onestore_inapp: ^0.1.1
+>           flutter_onestore_inapp: ^0.2.0
 >           ..
 >       ```
 >
@@ -50,16 +50,7 @@ A flutter plugin for ONE store In-App Purchase.
 >           }
 >         }
 >       ```
->     
->   - Add configuration dependency to **app's** build.gradle
 > 
->       ```groovy
->         dependencies {
->           ..
->           implementation "com.onestorecorp.sdk:sdk-configuration-kr:1.0.0"
->           ..
->         }
->       ```
 > - Add **<queries>** to **AndroidManifest.xml**
 >   - [If the Target SDK version is 30 (OS 11) or higher](https://dev.onestore.co.kr/devpoc/support/news/noticeView.omp?pageNo=4&noticeId=32968&viewPageNo=&searchValue=), the \<queries\> below must be added for the in-app library to operate properly.
 >

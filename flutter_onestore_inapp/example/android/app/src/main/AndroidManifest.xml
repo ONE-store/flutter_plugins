@@ -41,5 +41,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
+        <!-- Options for in-app testing on your global store -->
+        <!-- <meta-data android:name="onestore:dev_option" android:value="global" />-->
     </application>
 </manifest>
