@@ -278,15 +278,13 @@ class PurchaseClientManager {
   ///
   /// ['PurchaseClient#launchManageSubscription()'](https://onestore-dev.gitbook.io/dev/v/eng/tools/tools/v21/references/en-classes/en-purchaseclient#id-en-purchaseclient-launchmanagesubscription)
   Future<void> launchManageSubscription([PurchaseData? purchaseData]) async {
-    return _executeNonRetryable(
-        (client) => client.launchManageSubscription(purchaseData));
+    return _client.launchManageSubscription(purchaseData);
   }
 
   /// 원스토어 서비스를 최신버전으로 설치합니다.
   /// 원스토어 서비스의 버전이 낮거나 없을 경우 [_connection]으로 연결 시도시 [PurchaseResponse.needUpdate] 응답을 받을 수 있습니다.
   /// 이 때, 이 API를 호출해야 합니다.
   Future<IapResult> launchUpdateOrInstall() async {
-    return await _executeNonRetryable(
-        (client) => client.launchUpdateOrInstallFlow());
+    return await _client.launchUpdateOrInstallFlow();
   }
 }

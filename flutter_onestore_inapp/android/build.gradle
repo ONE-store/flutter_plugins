@@ -16,7 +16,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://repo.onestore.co.kr/repository/onestore-sdk-public' }
+        maven { url 'https://repo.onestore.net/repository/onestore-sdk-public' }
     }
 }
 
@@ -45,6 +45,6 @@ android {
 
 
 dependencies {
-    implementation "com.onestorecorp.sdk:sdk-licensing:2.1.0"
+    implementation "com.onestorecorp.sdk:sdk-licensing:2.1.1"
     implementation "com.onestorecorp.sdk:sdk-iap:21.01.00"
 }

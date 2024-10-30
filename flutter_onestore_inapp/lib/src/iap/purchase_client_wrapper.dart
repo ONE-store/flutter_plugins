@@ -14,18 +14,22 @@ const String _kOnPurchasesUpdated = 'onPurchasesUpdated';
 const String _kOnServiceDisconnected = 'onServiceDisconnected';
 
 class PurchaseClient extends OneStoreChannel {
-  String? _publicKey; // 'input your key'
-
   final Map<String, List<Function>> _callbacks = <String, List<Function>>{};
 
   PurchaseClient(
       String? publicKey, OnPurchasesUpdatedListener onPurchasesUpdated)
       : super('purchase') {
-    _publicKey = publicKey;
     _callbacks[_kOnPurchasesUpdated] = <OnPurchasesUpdatedListener>[
       onPurchasesUpdated
     ];
     channel.setMethodCallHandler(methodCallHandler);
+    initialize(publicKey);
+  }
+
+  Future<void> initialize(String? publicKey) async {
+    return channel.invokeMethod<void>('initialize', {
+      'publicKey': publicKey,
+    });
   }
 
   Future<bool> isReady() async {
@@ -39,10 +43,7 @@ class PurchaseClient extends OneStoreChannel {
         _callbacks[_kOnServiceDisconnected] ??= <Function>[];
     disconnectedCallbacks.add(onDisconnected);
     return IapResult.fromJson((await channel.invokeMapMethod<String, dynamic>(
-            'startConnection', {
-          'publicKey': _publicKey,
-          'handle': disconnectedCallbacks.length - 1
-        })) ??
+            'startConnection', {'handle': disconnectedCallbacks.length - 1})) ??
         <String, dynamic>{});
   }
 

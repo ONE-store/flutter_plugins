@@ -30,6 +30,7 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     private PurchaseClient purchaseClient;
 
     private Activity activity;
+    private String publicKey = "";
 
     private final HashMap<String, ProductDetail> cachedProducts = new HashMap<>();
 
@@ -49,6 +50,7 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     @Override
     public void onMethodCall(@NotNull MethodCall call, @NotNull MethodChannel.Result result) {
         switch (call.method) {
+            case "initialize": initialize(call); break;
             case "isReady": isReady(result); break;
             case "startConnection": startConnection(call, result); break;
             case "endConnection": endConnection(result); break;
@@ -56,26 +58,26 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
             case "consumeAsync": consumePurchase(call, result); break;
             case "acknowledgeAsync": acknowledgePurchase(call, result); break;
             case "queryPurchasesAsync": queryPurchases(call, result); break;
-            case "queryProductDetailsAsync": queryProductDetails(call ,result); break;
+            case "queryProductDetailsAsync": queryProductDetails(call, result); break;
             case "getStoreInfoAsync": getStoreInfo(result); break;
             case "launchManageSubscription": launchManageSubscription(call, result); break;
             case "launchUpdateOrInstallFlow": launchUpdateOrInstallFlow(result); break;
-            default:result.notImplemented(); break;
+            default: result.notImplemented(); break;
         }
     }
 
+    private void initialize(final MethodCall call) {
+        publicKey = call.argument("publicKey");
+    }
+
     private void isReady(MethodChannel.Result result) {
-        if (purchaseClientError(result)) return;
+        if (purchaseClientError(result))
+            return;
         result.success(purchaseClient.isReady());
     }
 
     private void startConnection(final MethodCall call, final MethodChannel.Result result) {
-        if (purchaseClient == null) {
-            purchaseClient = PurchaseClient.newBuilder(applicationContext)
-                    .setBase64PublicKey(call.argument("publicKey"))
-                    .setListener(new PluginPurchasesUpdatedListener(methodChannel))
-                    .build();
-        }
+        initPurchaseClient();
 
         purchaseClient.startConnection(new PurchaseClientStateListener() {
             private boolean setupFinished = false;
@@ -103,7 +105,8 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     }
 
     private void consumePurchase(final MethodCall call, final MethodChannel.Result result) {
-        if (purchaseClientError(result)) return;
+        if (purchaseClientError(result))
+            return;
 
         final ConsumeParams params = FlutterInAppHelper.toConsumeParams(call);
         purchaseClient.consumeAsync(params, (iapResult, purchaseData) -> {
@@ -113,7 +116,8 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     }
 
     private void acknowledgePurchase(final MethodCall call, final MethodChannel.Result result) {
-        if (purchaseClientError(result)) return;
+        if (purchaseClientError(result))
+            return;
 
         final AcknowledgeParams params = FlutterInAppHelper.toAcknowledgeParams(call);
         purchaseClient.acknowledgeAsync(params, (iapResult, purchaseData) -> {
@@ -123,7 +127,8 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     }
 
     private void queryProductDetails(final MethodCall call, final MethodChannel.Result result) {
-        if (purchaseClientError(result)) return;
+        if (purchaseClientError(result))
+            return;
 
         final ProductDetailsParams params = FlutterInAppHelper.toProductDetailParams(call);
         purchaseClient.queryProductDetailsAsync(params, (iapResult, list) -> {
@@ -136,7 +141,8 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     }
 
     private void queryPurchases(final MethodCall call, final MethodChannel.Result result) {
-        if (purchaseClientError(result)) return;
+        if (purchaseClientError(result))
+            return;
 
         final String productType = call.argument("productType");
         Logger.d(TAG, "queryPurchases request productType: productType");
@@ -151,7 +157,8 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     }
 
     private void getStoreInfo(final MethodChannel.Result result) {
-        if (purchaseClientError(result)) return;
+        if (purchaseClientError(result))
+            return;
 
         purchaseClient.getStoreInfoAsync((iapResult, s) -> {
             final Map<String, Object> resultData = new HashMap<>();
@@ -162,7 +169,8 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     }
 
     private void launchPurchaseFlow(final MethodCall call, final MethodChannel.Result result) {
-        if (purchaseClientError(result)) return;
+        if (purchaseClientError(result))
+            return;
 
         final PurchaseFlowParams params = FlutterInAppHelper.toPurchaseFlowParams(call);
         final IapResult iapResult = purchaseClient.launchPurchaseFlow(activity, params);
@@ -170,7 +178,7 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     }
 
     private void launchManageSubscription(final MethodCall call, final MethodChannel.Result result) {
-        if (purchaseClientError(result)) return;
+        initPurchaseClient();
 
         final SubscriptionParams subscriptionParams = FlutterInAppHelper.toSubscriptionParams(call);
         purchaseClient.launchManageSubscription(activity, subscriptionParams);
@@ -178,12 +186,13 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     }
 
     private void launchUpdateOrInstallFlow(final MethodChannel.Result result) {
-        if (purchaseClientError(result)) {
-            purchaseClient.launchUpdateOrInstallFlow(activity, iapResult -> {
-                Logger.d(TAG, "launchUpdateOrInstallFlow response => " + iapResult.toJsonString());
-                result.success(FlutterInAppHelper.fromIapResult(iapResult));
-            });// update or install 연결.
-        }
+        initPurchaseClient();
+
+        purchaseClient.launchUpdateOrInstallFlow(activity, iapResult -> {
+            Logger.d(TAG, "launchUpdateOrInstallFlow response => " + iapResult.toJsonString());
+            result.success(FlutterInAppHelper.fromIapResult(iapResult));
+        });// update or install 연결.
+
     }
 
     private void endConnection(MethodChannel.Result result) {
@@ -195,6 +204,15 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
         if (purchaseClient != null) {
             purchaseClient.endConnection();
             purchaseClient = null;
+        }
+    }
+
+    private void initPurchaseClient() {
+        if (purchaseClient == null) {
+            purchaseClient = PurchaseClient.newBuilder(applicationContext)
+                    .setBase64PublicKey(publicKey)
+                    .setListener(new PluginPurchasesUpdatedListener(methodChannel))
+                    .build();
         }
     }
 
