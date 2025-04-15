@@ -1,7 +1,7 @@
 # flutter\_onestore\_inapp
 
 [![GitHub CI](https://github.com/ONE-store/flutter_plugins/actions/workflows/flutter.yml/badge.svg)](https://github.com/ONE-store/flutter_plugins/actions)
-[![GitHub release (with filter)](https://img.shields.io/github/v/release/ONE-store/flutter_plugins)](https://github.com/ONE-store/flutter_plugins/releases/tag/flutter_onestore_inapp-v0.3.0)
+[![GitHub release (with filter)](https://img.shields.io/github/v/release/ONE-store/flutter_plugins)](https://github.com/ONE-store/flutter_plugins/releases/tag/flutter_onestore_inapp-v0.4.1)
 [![Pub Version (including pre-releases)](https://img.shields.io/pub/v/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/versions/0.3.0)
 [![Pub Points](https://img.shields.io/pub/points/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/score)
 
