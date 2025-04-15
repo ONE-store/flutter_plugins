@@ -1,3 +1,8 @@
+## 0.4.0
+
+* Enhanced developer option features
+* Added StoreEnvironment.getStoreType() API
+
 ## 0.3.0
 
 * Fixed bug as referenced in [Issue #1](https://github.com/ONE-store/flutter_plugins/issues/1)
@@ -11,7 +16,7 @@
 
 * Update Library InApp Purchase SDK 21.0.02 -> 21.0.1.00
 * Update Library ALC SDK 2.0.0 -> 2.1.0
-* Remove Configuration SDk 
+* Remove Configuration SDk
 
 ## 0.1.1
 

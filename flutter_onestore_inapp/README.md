@@ -14,7 +14,7 @@ A flutter plugin for ONE store In-App Purchase.
 
 ### Pre-Preparations for ONE store IAP
 
-> - [Membership Registration](https://onestore-dev.gitbook.io/dev/v/eng/docs/member) 
+> - [Membership Registration](https://onestore-dev.gitbook.io/dev/v/eng/docs/member)
 > - [Register App](https://onestore-dev.gitbook.io/dev/v/eng/tools/tools/v21/pre-preparations-for-one-store-iap#prepreparationsforonestoreiap-registerapp)
 
 
@@ -26,12 +26,12 @@ A flutter plugin for ONE store In-App Purchase.
 >       ```
 >         $ flutter pub add flutter_onestore_inapp
 >       ```
-> 
+>
 >   - Add dependency to **pubspec.yaml**
 >
 >       ```dart
 >         dependencies:
->           flutter_onestore_inapp: ^0.3.0
+>           flutter_onestore_inapp: ^0.4.0
 >       ```
 >
 >   - Click 'pub get' to download the package or run 'flutter pub get' from the command line.
@@ -39,7 +39,7 @@ A flutter plugin for ONE store In-App Purchase.
 > - Add dependencies to **build.gradle**
 >
 >   - Add the maven address to the **project's** build.gradle
->   
+>
 >       ```groovy
 >         allprojects {
 >           repositories {
@@ -47,29 +47,27 @@ A flutter plugin for ONE store In-App Purchase.
 >           }
 >         }
 >       ```
-> 
+>
 > - Add **<queries>** to **AndroidManifest.xml**
 >   - [If the Target SDK version is 30 (OS 11) or higher](https://dev.onestore.co.kr/devpoc/support/news/noticeView.omp?pageNo=4&noticeId=32968&viewPageNo=&searchValue=), the **\<queries\>** below must be added for the in-app library to operate properly.
 >
 >       ```xml
 >         <manifest>
->             ...
 >             <queries>
 >                 <intent>
 >                     <action android:name="com.onestore.ipc.iap.IapService.ACTION" />
 >                 </intent>
 >                 <intent>
 >                     <action android:name="android.intent.action.VIEW" />
->       
+>
 >                     <data android:scheme="onestore" />
 >                 </intent>
 >             </queries>
->             ...
+>
 >             <application>
->                 ...
+>
 >             </application>
 >         </manifest>
->       ```
 
 
 ## Usage
@@ -114,7 +112,7 @@ This plugin uses
 [json_serializable](https://pub.dev/packages/json_serializable) for the
 many data structs passed between the underlying platform layers and Dart. After
 editing any of the serialized data structs, rebuild the serializers by running
-`flutter packages pub run build_runner build --delete-conflicting-outputs`.   
+`flutter packages pub run build_runner build --delete-conflicting-outputs`.
 `flutter packages pub run build_runner watch --delete-conflicting-outputs` will
 watch the filesystem for changes.
 

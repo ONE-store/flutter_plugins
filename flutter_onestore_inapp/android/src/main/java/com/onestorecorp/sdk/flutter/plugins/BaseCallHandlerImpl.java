@@ -1,8 +1,10 @@
 package com.onestorecorp.sdk.flutter.plugins;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.gaa.sdk.base.Logger;
+import com.gaa.sdk.base.StoreEnvironment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -11,12 +13,27 @@ import io.flutter.plugin.common.MethodChannel;
 
 public class BaseCallHandlerImpl implements MethodChannel.MethodCallHandler {
     private static final String TAG = "BaseCallHandlerImpl";
+
+    private final Context context;
+
+
+    public BaseCallHandlerImpl(Context context) {
+        this.context = context;
+    }
+
     @Override
     public void onMethodCall(@NotNull MethodCall call, @NotNull MethodChannel.Result result) {
-        if ("setLogLevel".equals(call.method)) {
-            Logger.setLogLevel(toLogLevel(call));
-        } else {
-            result.notImplemented();
+        switch (call.method) {
+            case "setLogLevel":
+                Logger.setLogLevel(toLogLevel(call));
+                break;
+            case "getStoreType":
+                int storeType = StoreEnvironment.getStoreType(context);
+                result.success(storeType);
+                break;
+            default:
+                result.notImplemented();
+                break;
         }
     }
 

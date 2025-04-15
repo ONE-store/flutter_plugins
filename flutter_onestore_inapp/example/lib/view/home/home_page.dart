@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   int _bottomNaviSelectedIndex = 0;
 
   late final PurchaseViewModel _viewModel =
-      Provider.of<PurchaseViewModel>(context, listen: false);
+  Provider.of<PurchaseViewModel>(context, listen: false);
 
   @override
   void initState() {
@@ -32,6 +32,10 @@ class _HomePageState extends State<HomePage> {
     // 앱 개발시 필요에 의해 SDK & Plugin의 로그 레벨을 변경하면 좀 더 자세한 정보를 얻을 수 있습니다.
     // WARNING! Release Build 시엔 로그 레벨 세팅을 제거 바랍니다. (default: Level.info)
     OneStoreLogger.setLogLevel(LogLevel.verbose);
+
+    // 해당 기능을 이용하기위해 AndroidMainfast의 onestore:dev_option을 달아야 합니다.
+    getStoreType();
+
     // Sign in to ONEstore.
     _launchSignInFlow();
   }
@@ -85,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                   builder: (context, model, child) {
                     return Padding(
                       padding:
-                          const EdgeInsets.only(left: 15, top: 15, right: 15),
+                      const EdgeInsets.only(left: 15, top: 15, right: 15),
                       child: CustomViewPager<ProductDetail>(
                           title: 'My Subscriptions',
                           type: Type.move,
@@ -125,10 +129,11 @@ class _HomePageState extends State<HomePage> {
   /// 구매한 구독 상품의 상세 정보를 바탕으로 PagerItem을 만듬.
   List<PageItem<ProductDetail>> _getIntersectionSubscriptions() {
     Set<String> purchaseIds =
-        _viewModel.subscriptions.map((p) => p.productId).toSet();
+    _viewModel.subscriptions.map((p) => p.productId).toSet();
     return _viewModel.subscriptionProducts
         .where((product) => purchaseIds.contains(product.productId))
-        .map((e) => PageItem<ProductDetail>(
+        .map((e) =>
+        PageItem<ProductDetail>(
             title: e.title,
             description: '${e.subscriptionPeriod.toString()} '
                 '(${e.subscriptionPeriodUnitCode})',
@@ -218,7 +223,7 @@ class _HomePageState extends State<HomePage> {
     _logger.d('buyProduct => ${item.toString()}');
     switch (item.productType) {
       case ProductType.inapp:
-        // 관리형 상품 구매
+      // 관리형 상품 구매
         showDialog(
             context: context,
             builder: buildConsumableDialog(
@@ -229,7 +234,7 @@ class _HomePageState extends State<HomePage> {
         break;
 
       case ProductType.subs:
-        // 구독 상품 구매
+      // 구독 상품 구매
         showDialog(
             context: context,
             builder: buildSubscriptionDialog(
@@ -268,5 +273,25 @@ class _HomePageState extends State<HomePage> {
   Future<void> _fetchData() async {
     await _viewModel.fetchProductDetails();
     await _viewModel.fetchPurchases();
+  }
+
+
+  Future getStoreType() async {
+    StoreType storeType = await OneStoreEnvironment.getStoreType();
+
+    switch (storeType) {
+      case StoreType.unknown:
+        debugPrint("스토어 정보를 알 수 없습니다.");
+        break;
+      case StoreType.oneStore:
+        debugPrint("ONE Store에서 설치된 앱입니다.");
+        break;
+      case StoreType.vending:
+        debugPrint("Google Play Store에서 설치된 앱입니다.");
+        break;
+      case StoreType.etc:
+        debugPrint("기타 스토어에서 설치된 앱입니다.");
+        break;
+    }
   }
 }

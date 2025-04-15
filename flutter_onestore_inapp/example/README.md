@@ -31,13 +31,19 @@ Demonstrates how to use the flutter_onestore_inapp plugin.
 
    ```xml
    <application>
-       ...
-         <!-- Options for in-app testing on your global store -->
-         <meta-data android:name="onestore:dev_option" android:value="global" />
-       ...
+         <!--
+            WARNING: Remove this option for release binaries!
+            Options for in-app testing on your global store (Available from IAP v21.02.00)
+             - onestore_00 : South Korea (Default)
+             - onestore_01 : Singapore, Taiwan
+             - onestore_02 : United States (Digital Turbine)
+
+            If not set, defaults to South Korea.
+         -->
+         <meta-data android:name="onestore:dev_option" android:value="onestore_01" />
    </application>
    ```
-   
+
 > **Warning**
 This option must be removed from release versions.
-   
+

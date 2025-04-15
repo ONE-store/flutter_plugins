@@ -1,11 +1,11 @@
 name: flutter_onestore_inapp
 description: A Flutter plugin for in-app purchases. Exposes APIs for making in-app purchases through the ONEstore.
-version: 0.3.0
+version: 0.4.0
 repository: https://github.com/ONE-store/flutter_plugins/tree/main/flutter_onestore_inapp
 issue_tracker: https://github.com/ONE-store/flutter_plugins/issues
 
 environment:
-  sdk: '>=2.18.1 <4.0.0'
+  sdk: '>=3.4.1 <4.0.0'
   flutter: ">=3.3.0"
 
 dependencies:

@@ -1,11 +1,8 @@
-import 'package:flutter/services.dart';
-import 'package:flutter_onestore_inapp/src/onestore_channel.dart';
-
-const _loggerChannel = MethodChannel('${OneStoreChannel.rootChannel}/base');
+import 'onestore_base.dart';
 
 class OneStoreLogger {
   static Future<void> setLogLevel(LogLevel logLevel) async {
-    return _loggerChannel.invokeMethod<void>('setLogLevel', logLevel.name);
+    return baseChannel.invokeMethod<void>('setLogLevel', logLevel.name);
   }
 }
 

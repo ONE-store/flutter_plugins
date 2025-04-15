@@ -8,15 +8,17 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath("com.android.tools.build:gradle:7.3.0")
     }
 }
 
-allprojects {
+rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://repo.onestore.net/repository/onestore-sdk-public' }
+        maven{
+            url "https://repo.onestore.net/repository/onestore-sdk-public"
+        }
     }
 }
 
@@ -26,7 +28,7 @@ android {
     if (project.android.hasProperty("namespace")) {
         namespace 'com.onestorecorp.sdk.flutter.plugins'
     }
-    compileSdkVersion 33
+    compileSdk = 34
 
     defaultConfig {
         minSdkVersion 16
@@ -37,14 +39,16 @@ android {
         disable 'AndroidGradlePluginVersion', 'InvalidPackage', 'GradleDependency'
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
-}
+
+    dependencies {
+        implementation "com.onestorecorp.sdk:sdk-licensing:2.2.1"
+        implementation "com.onestorecorp.sdk:sdk-iap:21.02.01"
+    }
 
 
-dependencies {
-    implementation "com.onestorecorp.sdk:sdk-licensing:2.1.1"
-    implementation "com.onestorecorp.sdk:sdk-iap:21.01.00"
 }
+

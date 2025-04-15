@@ -1,4 +1,5 @@
 export 'src/onestore_logger.dart';
+export 'src/onestore_enviroment.dart';
 
 export 'src/auth/signin_result.dart';
 export 'src/auth/auth_client_wrapper.dart';

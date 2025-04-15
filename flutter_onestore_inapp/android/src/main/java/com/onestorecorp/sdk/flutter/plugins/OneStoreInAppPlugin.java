@@ -51,7 +51,7 @@ public class OneStoreInAppPlugin implements FlutterPlugin, ActivityAware {
 
     @Override
     public void onAttachedToActivity(@NotNull ActivityPluginBinding binding) {
-        baseChannel.setMethodCallHandler(new BaseCallHandlerImpl());
+        baseChannel.setMethodCallHandler(new BaseCallHandlerImpl(binding.getActivity()));
 
         authCallHandler.setActivity(binding.getActivity());
         authChannel.setMethodCallHandler(authCallHandler);
