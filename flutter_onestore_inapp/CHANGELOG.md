@@ -1,3 +1,10 @@
+## 0.4.2
+
+* Update Library InApp Purchase SDK `21.02.01` -> `21.04.00`
+* Added the new dev_option `onestore_03`.
+* Update Android build tools and dependencies
+* Update `example.md`
+ 
 ## 0.4.1
 
 * Update README.md

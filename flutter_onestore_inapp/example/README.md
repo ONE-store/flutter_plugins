@@ -37,6 +37,7 @@ Demonstrates how to use the flutter_onestore_inapp plugin.
              - onestore_00 : South Korea (Default)
              - onestore_01 : Singapore, Taiwan
              - onestore_02 : United States (Digital Turbine)
+             - onestore_03 : ONE Billing Lab (Available from IAP v21.04.00)
 
             If not set, defaults to South Korea.
          -->
