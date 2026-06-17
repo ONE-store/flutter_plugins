@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -48,7 +49,13 @@ public class AuthCallHandlerImpl implements MethodChannel.MethodCallHandler {
     }
 
     private void launchSignInFlow(final MethodChannel.Result result) {
+        final AtomicBoolean resultSubmitted = new AtomicBoolean(false);
         signInClient.launchSignInFlow(activity, signInResult -> {
+            if (!resultSubmitted.compareAndSet(false, true)) {
+                Logger.d(TAG, "Tried to call launchSignInFlow callback multiple times.");
+                return;
+            }
+
             Map<String, Object> resultData = new HashMap<>();
             resultData.put("code", signInResult.getCode());
             resultData.put("message", signInResult.getMessage());

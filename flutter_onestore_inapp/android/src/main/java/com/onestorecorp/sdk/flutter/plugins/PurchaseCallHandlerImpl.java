@@ -18,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -188,11 +189,16 @@ public class PurchaseCallHandlerImpl implements MethodChannel.MethodCallHandler 
     private void launchUpdateOrInstallFlow(final MethodChannel.Result result) {
         initPurchaseClient();
 
+        final AtomicBoolean resultSubmitted = new AtomicBoolean(false);
         purchaseClient.launchUpdateOrInstallFlow(activity, iapResult -> {
+            if (!resultSubmitted.compareAndSet(false, true)) {
+                Logger.d(TAG, "Tried to call launchUpdateOrInstallFlow callback multiple times.");
+                return;
+            }
+
             Logger.d(TAG, "launchUpdateOrInstallFlow response => " + iapResult.toJsonString());
             result.success(FlutterInAppHelper.fromIapResult(iapResult));
-        });// update or install 연결.
-
+        });
     }
 
     private void endConnection(MethodChannel.Result result) {

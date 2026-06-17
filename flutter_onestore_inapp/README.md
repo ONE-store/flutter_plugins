@@ -1,8 +1,8 @@
 # flutter\_onestore\_inapp
 
 [![GitHub CI](https://github.com/ONE-store/flutter_plugins/actions/workflows/flutter.yml/badge.svg)](https://github.com/ONE-store/flutter_plugins/actions)
-[![GitHub release (with filter)](https://img.shields.io/github/v/release/ONE-store/flutter_plugins)](https://github.com/ONE-store/flutter_plugins/releases/tag/flutter_onestore_inapp-v0.4.2)
-[![Pub Version (including pre-releases)](https://img.shields.io/pub/v/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/versions/0.4.2)
+[![GitHub release (with filter)](https://img.shields.io/github/v/release/ONE-store/flutter_plugins)](https://github.com/ONE-store/flutter_plugins/releases/tag/flutter_onestore_inapp-v0.4.3)
+[![Pub Version (including pre-releases)](https://img.shields.io/pub/v/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/versions/0.4.3)
 [![Pub Points](https://img.shields.io/pub/points/flutter_onestore_inapp)](https://pub.dev/packages/flutter_onestore_inapp/score)
 
 
@@ -31,20 +31,18 @@ A flutter plugin for ONE store In-App Purchase.
 >
 >       ```dart
 >         dependencies:
->           flutter_onestore_inapp: ^0.4.2
+>           flutter_onestore_inapp: ^0.4.3
 >       ```
 >
 >   - Click 'pub get' to download the package or run 'flutter pub get' from the command line.
 >
-> - Add dependencies to **build.gradle**
+> - Verify **mavenCentral()** is in your **build.gradle**
 >
->   - Add the maven address to the **project's** build.gradle
+>   - The SDK is distributed via Maven Central. Most projects already include it, but confirm your project-level `build.gradle` (or `settings.gradle`) has `mavenCentral()` in the repositories block.
 >
 >       ```groovy
->         allprojects {
->           repositories {
->             maven { url 'https://repo.onestore.net/repository/onestore-sdk-public' }
->           }
+>         repositories {
+>           mavenCentral()
 >         }
 >       ```
 >

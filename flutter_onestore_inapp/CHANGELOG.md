@@ -1,3 +1,8 @@
+## 0.4.3
+
+* Fixed crash from duplicate callbacks on configuration change, as referenced in [Issue #3](https://github.com/ONE-store/flutter_plugins/issues/3)
+* Migrate SDK dependency repository from custom Maven repository to Maven Central
+
 ## 0.4.2
 
 * Update Library InApp Purchase SDK `21.02.01` -> `21.04.00`
